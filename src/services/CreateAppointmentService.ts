@@ -29,7 +29,6 @@ class CreateAppointmentService {
             provider,
             date: appointmentDate,
         })
-        // para salvar no repositório
 
         await appointmentsRepository.save(appointment)
         return appointment
