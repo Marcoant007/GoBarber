@@ -22,3 +22,5 @@ class DeleteAppointmentsService {
 }
 
 export default DeleteAppointmentsService
+
+//TESTE COMMIT 2

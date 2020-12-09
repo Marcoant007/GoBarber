@@ -19,7 +19,7 @@ class CreateAppointmentService {
 
         const appointmentDate = startOfHour(date);
 
-        //TESTE COMMIT 1
+
 
         const appointment = appointmentsRepository.create({
             provider,
