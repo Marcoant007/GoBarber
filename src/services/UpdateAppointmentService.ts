@@ -6,7 +6,6 @@ interface Request {
     provider: string;
     date: Date;
 }
-
 class UpdateAppointmentService {
     public async execute({ id, date, provider }: Request) {
 
@@ -19,6 +18,5 @@ class UpdateAppointmentService {
         return appointmentUpdated;
     }
 }
-
 export default UpdateAppointmentService
 

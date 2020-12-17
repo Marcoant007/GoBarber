@@ -6,6 +6,7 @@ import UpdateAppointmentService from '../services/UpdateAppointmentService';
 import DeleteAppointmentsService from '../services/DeleteAppointmentService';
 
 const appointmentsRouter = Router();
+
 appointmentsRouter.get('/', async (request, response) => {
     const listAppointment = new ListAppointmentService();
     const appointments = await listAppointment.execute()
