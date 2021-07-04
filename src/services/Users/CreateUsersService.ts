@@ -1,6 +1,6 @@
 import { hash } from "bcrypt";
 import { getRepository } from "typeorm";
-import User from "../models/User";
+import User from "../../models/User";
 
 interface IUser {
     name: string;

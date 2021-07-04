@@ -1,10 +1,10 @@
 import { response, Router } from 'express';
 import { parseISO } from 'date-fns'
 
-import UpdateAppointmentService from '../services/UpdateAppointmentService';
-import ListAppointmentService from '../services/ListAppointmentService';
-import CreateAppointmentService from '../services/CreateAppointmentService';
-import DeleteAppointmentsService from '../services/DeleteAppointmentService';
+import DeleteAppointmentsService from '../services/Appointments/DeleteAppointmentService';
+import ListAppointmentService from '../services/Appointments/ListAppointmentService';
+import CreateAppointmentService from '../services/Appointments/CreateAppointmentService';
+import UpdateAppointmentService from '../services/Appointments/UpdateAppointmentService';
 
 
 const appointmentsRouter = Router();
