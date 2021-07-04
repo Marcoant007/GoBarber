@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm'
-import AppointmentsRepository from '../repositories/AppointmentsRepository';
+import AppointmentsRepository from '../repositories/AppointmentsRepository'
 interface Request {
     id: string;
 }

@@ -1,9 +1,11 @@
 import { response, Router } from 'express';
 import { parseISO } from 'date-fns'
-import CreateAppointmentService from '../services/CreateAppointmentService';
-import ListAppointmentService from '../services/ListAppointmentService';
+
 import UpdateAppointmentService from '../services/UpdateAppointmentService';
+import ListAppointmentService from '../services/ListAppointmentService';
+import CreateAppointmentService from '../services/CreateAppointmentService';
 import DeleteAppointmentsService from '../services/DeleteAppointmentService';
+
 
 const appointmentsRouter = Router();
 
@@ -14,31 +16,29 @@ appointmentsRouter.get('/', async (request, response) => {
 });
 appointmentsRouter.post('/', async (request, response) => {
     try {
-        const { provider, date } = request.body;
-        console.log(provider, date);
+        const { provider_id, date } = request.body;
         const parsedDate = parseISO(date);
         const createAppointment = new CreateAppointmentService();
         const appointment = await createAppointment.execute({
             date: parsedDate,
-            provider,
+            provider_id: provider_id,
         });
         return response.json(appointment);
-    } catch (err) {
+    } catch (err:any) {
         return response.status(400).json({ error: err.message })
     }
 });
 appointmentsRouter.put('/:id', async (request, response) => {
     const { id } = request.params
-    const { date, provider } = request.body
+    const { date, provider_id } = request.body
     const updateappointment = new UpdateAppointmentService();
     const appointment = await updateappointment.execute(
         {
             id: id,
-            provider: provider,
+            provider_id: provider_id,
             date: date
         }
     );
-    console.log(date, provider);
     return response.json(appointment)
 })
 appointmentsRouter.delete('/:id', async (request, response) => {

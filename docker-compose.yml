@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+
+  Gobarber:
+    environment: 
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=gostack_gobarber
+      - POSTGRES_USER=postgres
+    ports: 
+      - "5433:5432"
+    image: postgres:10-alpine
+    volumes: 
+      - db-data:/var/lib/postgresql/data
+
+volumes: 
+  db-data:
