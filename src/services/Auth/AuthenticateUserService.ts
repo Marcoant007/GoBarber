@@ -1,17 +1,21 @@
 import { compare } from "bcrypt";
 import { getCustomRepository, getRepository } from "typeorm";
 import User from "../../models/User";
-
+import {sign, verify} from 'jsonwebtoken'
+import auth from "../../config/auth";
 
 class IAuth {
     email: string;
     password: string;
+    
+}
+class IResponse{
+    user: User;
+    token: string
 }
 
-
-
 class AuthenticateUserService {
-    public async execute({ email, password }: IAuth): Promise<{user: User}> {
+    public async execute({ email, password }: IAuth): Promise<IResponse> {
 
         const userRepository = getRepository(User);
         const user = await userRepository.findOne({where: {email}});
@@ -23,7 +27,15 @@ class AuthenticateUserService {
         if(!passwordMatched){
             throw new Error('Incorrect email/password combination.');
         }
-        return {user}
+
+        const { secret, expiresIn} = auth.jwt;
+
+        const token = sign({}, secret, {
+            subject: user.id,
+            expiresIn: expiresIn,
+        });
+
+        return {user, token}
     }
 }
 

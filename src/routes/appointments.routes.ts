@@ -5,9 +5,12 @@ import DeleteAppointmentsService from '../services/Appointments/DeleteAppointmen
 import ListAppointmentService from '../services/Appointments/ListAppointmentService';
 import CreateAppointmentService from '../services/Appointments/CreateAppointmentService';
 import UpdateAppointmentService from '../services/Appointments/UpdateAppointmentService';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 
 const appointmentsRouter = Router();
+appointmentsRouter.use(ensureAuthenticated) // coloco aqui para aplicar em todas as rotas
+
 
 appointmentsRouter.get('/', async (request, response) => {
     const listAppointment = new ListAppointmentService();
