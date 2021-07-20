@@ -21,9 +21,7 @@ export default function ensureAuthenticated(request:Request,response:Response,ne
 
         const { sub } = decoded as TokenPayload; //to forçando o tipo da variavel
 
-        request.user = {
-            id: sub,
-        };
+        request.user_id = sub
 
         return next();
           
