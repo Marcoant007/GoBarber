@@ -5,8 +5,10 @@ import routes from './routes';
 
 
 import './database'
+import upload from './config/upload';
 const app = express();
-app.use(express.json())
+app.use(express.json());
+app.use('/files', express.static(upload.directory));//quero servir uma pasta de forma estatica
 app.use(routes);
 
 app.listen(3333, () => {
